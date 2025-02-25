@@ -14,7 +14,7 @@ const LoginForm = () => {
 
   const validateIdentifier = (value) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10}$/;
+    const phoneRegex = /^\d{11}$/;
     if (emailRegex.test(value) || phoneRegex.test(value)) {
       return true;
     }
@@ -26,12 +26,12 @@ const LoginForm = () => {
     if (!pinRegex.test(value)) {
       return "PIN must contain only numbers";
     }
-    if (value.length < 4) {
-      return "PIN must be at least 4 digits";
+    if (value.length !== 5) {
+      return "PIN must be at least 5 digits";
     }
-    if (value.length > 6) {
-      return "PIN cannot exceed 6 digits";
-    }
+    // if (value.length > 6) {
+    //   return "PIN cannot exceed 6 digits";
+    // }
     return true;
   };
 
