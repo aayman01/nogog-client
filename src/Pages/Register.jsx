@@ -135,7 +135,7 @@ const Register = () => {
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">Select account type</option>
-              <option value="agent">Agent</option>
+              <option value="pending">Agent</option>
               <option value="user">User</option>
             </select>
             {errors.accountType && (

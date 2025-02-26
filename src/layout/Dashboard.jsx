@@ -4,6 +4,7 @@ import AdminDashboard from "../Pages/AdminDashboard";
 import useAuth from "../hooks/useAuth";
 import useUser from "../hooks/useUser";
 import { useState } from "react";
+import PendingAgent from "../Pages/PendingAgent";
 
 const Dashboard = () => {
   const { user, loading, logout } = useAuth();
@@ -42,6 +43,7 @@ const Dashboard = () => {
       {user?.role === "user" && <UserDashboard />}
       {user?.role === "agent" && <AgentDashboard />}
       {user?.role === "admin" && <AdminDashboard />}
+      {user?.role === "pending" && <PendingAgent />}
     </div>
   );
 };
