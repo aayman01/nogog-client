@@ -1,14 +1,34 @@
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
-const Register = () =>{
+const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    axiosPublic
+      .post("/register", data)
+      .then((res) => {
+        // console.log(res.data);
+        if (res?.data?.message === "success") {
+          toast.success("Registration successful");
+          reset();
+        }
+      })
+      .catch((err) => {
+        // console.log(err);
+        if (err.response && err.response.status === 400) {
+          toast.error(err.response.data.message);
+        } else {
+          toast.error("Something went wrong. Please try again.");
+        }
+      });
   };
 
   return (
@@ -128,7 +148,7 @@ const Register = () =>{
               NID Number
             </label>
             <input
-              {...register("nidNumber", { required: "NID number is required" })}
+              {...register("nid", { required: "NID number is required" })}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter NID number"
             />
@@ -149,6 +169,6 @@ const Register = () =>{
       </div>
     </div>
   );
-}
- 
+};
+
 export default Register;
