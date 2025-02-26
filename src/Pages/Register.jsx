@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import { redirect } from "react-router-dom";
 
 const Register = () => {
   const axiosPublic = useAxiosPublic();
@@ -19,6 +20,7 @@ const Register = () => {
         if (res?.data?.message === "success") {
           toast.success("Registration successful");
           reset();
+          redirect('/login');
         }
       })
       .catch((err) => {

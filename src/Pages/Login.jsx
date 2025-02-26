@@ -1,6 +1,11 @@
 import { useForm } from "react-hook-form";
+import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+
 
 const LoginForm = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -29,14 +34,32 @@ const LoginForm = () => {
     if (value.length !== 5) {
       return "PIN must be at least 5 digits";
     }
-    // if (value.length > 6) {
-    //   return "PIN cannot exceed 6 digits";
-    // }
     return true;
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    // console.log(data);
+    // axiosPublic
+    //   .post("/login", data)
+    //   .then((res) => {
+        
+    //     if (res?.data?.message === "success") {
+    //       toast.success("Login successful");
+    //       reset();
+    //       redirect("/");
+    //     }
+    //   })
+    //   .catch((err) => {
+       
+    //     if (err.response && err.response.status === 400) {
+    //       toast.error(err.response.data.message);
+    //     } else {
+    //       toast.error("Something went wrong. Please try again.");
+    //     }
+    //   });
+    await login(data.identifier, data.pin);
+    navigate('/')
+
   };
 
   return (
