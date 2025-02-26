@@ -58,7 +58,7 @@ const LoginForm = () => {
     //     }
     //   });
     await login(data.identifier, data.pin);
-    navigate('/')
+    navigate("/dashboard");
 
   };
 

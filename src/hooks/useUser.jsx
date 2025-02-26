@@ -12,10 +12,10 @@ const useUser = () => {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      if (user && user.id) {
+      if (user) {
         // Check if user and user.id exist
         try {
-          const res = await axiosPublic.get(`/user/${user.id}`);
+          const res = await axiosPublic.get(`/user/${user?.id}`);
           setUserInfo(res.data);
         } catch (error) {
           console.error("Error fetching user info:", error);
