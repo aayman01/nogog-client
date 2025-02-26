@@ -6,17 +6,17 @@ import useUser from "../hooks/useUser";
 import { useState } from "react";
 
 const Dashboard = () => {
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
   const { userInfo, userLoading } = useUser();
   const [showBalance, setShowBalance] = useState(false);
 
   console.log(userInfo);
 
-  if (loading | userLoading) return <p className="flex items-start justify-center">Loading...</p>;
+  if (loading | userLoading) return <div className="flex items-start justify-center">Loading...</div>;
 
   return (
-    <div className="p-4">
-      <div className="flex items-center justify-between px-4">
+    <div className="">
+      <div className="flex items-center justify-between bg-secondary text-white rounded-md py-7 px-5">
         <div>
           <h1 className="text-2xl font-bold">Welcome, {userInfo?.name}</h1>
           <h3 className="text-lg font-semibold">
@@ -30,9 +30,14 @@ const Dashboard = () => {
         >
           Your Balance: {showBalance ? `${userInfo?.balance} Taka` : "********"}
         </p>
-        {/* <p className="text-lg font-bold">
-          Your Balance: {userInfo?.balance} Taka
-        </p> */}
+      </div>
+      <div className="flex items-center justify-end p-5">
+        <button
+          onClick={logout}
+          className="font-semibold rounded-md bg-primary px-4 py-2 text-white transition-colors hover:bg-secondary"
+        >
+          Log out
+        </button>
       </div>
       {user?.role === "user" && <UserDashboard />}
       {user?.role === "agent" && <AgentDashboard />}

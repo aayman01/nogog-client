@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
     const token = localStorage.getItem("token");
     if (token) {
       axiosPublic
-        .get("http://localhost:5000/user", {
+        .get("/users", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -66,4 +66,6 @@ const AuthProvider = ({ children }) => {
   );
 }
 
+// export { AuthContext };
 export default AuthProvider;
+
