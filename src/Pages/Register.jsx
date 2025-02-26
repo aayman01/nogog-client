@@ -48,7 +48,7 @@ const Register = () => {
             </label>
             <input
               {...register("name", { required: "Name is required" })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Enter your name"
             />
             {errors.name && (
@@ -71,7 +71,7 @@ const Register = () => {
                 },
               })}
               maxLength={5}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Enter 5 digit PIN"
             />
             {errors.pin && (
@@ -91,7 +91,7 @@ const Register = () => {
                   message: "Please enter a valid mobile number",
                 },
               })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Enter mobile number"
             />
             {errors.mobile && (
@@ -114,7 +114,7 @@ const Register = () => {
                 },
               })}
               type="email"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Enter your email"
             />
             {errors.email && (
@@ -132,7 +132,7 @@ const Register = () => {
               {...register("accountType", {
                 required: "Please select an account type",
               })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">Select account type</option>
               <option value="agent">Agent</option>
@@ -151,7 +151,7 @@ const Register = () => {
             </label>
             <input
               {...register("nid", { required: "NID number is required" })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               placeholder="Enter NID number"
             />
             {errors.nidNumber && (
@@ -160,10 +160,11 @@ const Register = () => {
               </span>
             )}
           </div>
+          <p className="flex justify-end items-center gap-1">Already have an account <a href="/login" className="text-primary font-semibold mr-1">login</a></p>
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+            className="w-full rounded-md bg-primary px-4 py-2 text-white transition-colors hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
           >
             Register
           </button>
