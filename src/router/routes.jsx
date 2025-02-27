@@ -4,15 +4,14 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Main from "../layout/Main";
 import Dashboard from "../layout/Dashboard";
+import { TransactionsPage } from "../Pages/TransicationsPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
     children: [
-      { path: "/", 
-        element: <HomePage />
-      },
+      { path: "/", element: <HomePage /> },
       {
         path: "/login",
         element: <Login />,
@@ -22,9 +21,13 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path:"/dashboard",
-        element: <Dashboard />
-      }
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/admin/agents/:id",
+        element: <TransactionsPage />,
+      },
     ],
   },
 ]);

@@ -34,7 +34,7 @@ const AdminDashboard = () => {
 
   if (isLoading)
     return (
-      <p className="text-center text-lg font-semibold">Loading agents...</p>
+      <p className="text-center text-lg font-semibold flex items-center justify-center">Loading agents...</p>
     );
 
   return (
