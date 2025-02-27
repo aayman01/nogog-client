@@ -5,6 +5,7 @@ import Register from "../Pages/Register";
 import Main from "../layout/Main";
 import Dashboard from "../layout/Dashboard";
 import { TransactionsPage } from "../Pages/TransicationsPage";
+import SendMoney from "../Pages/SendMoney";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path:"send-money",
+        element: <SendMoney/>
       },
       {
         path: "/admin/agents/:id",
