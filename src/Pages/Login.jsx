@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+
 
 
 const LoginForm = () => {
   const { login } = useAuth();
-  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -58,7 +57,7 @@ const LoginForm = () => {
     //     }
     //   });
     await login(data.identifier, data.pin);
-    navigate("/dashboard");
+    
 
   };
 

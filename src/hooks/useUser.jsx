@@ -1,37 +1,27 @@
-import { useState, useEffect } from "react";
+import { useQuery } from '@tanstack/react-query';
 import useAuth from "./useAuth";
 import useAxiosPublic from "./useAxiosPublic";
 
-
 const useUser = () => {
-  const { user } = useAuth(); 
+  const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
-  const [userInfo, setUserInfo] = useState(null);
-  const [userLoading, setUserLoading] = useState(true);
-  const [userError, setUserError] = useState(null);
 
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      if (user) {
-        // Check if user and user.id exist
-        try {
-          const res = await axiosPublic.get(`/user/${user?.id}`);
-          setUserInfo(res.data);
-        } catch (error) {
-          console.error("Error fetching user info:", error);
-          setUserError(error.message || "Failed to fetch user info.");
-        } finally {
-          setUserLoading(false);
-        }
-      } else {
-        setUserLoading(false);
-      }
-    };
+  const { data: userInfo, isLoading: userLoading, error: userError, refetch } = useQuery({
+    queryKey: ['user', user?.id],
+    queryFn: async () => {
+      if (!user?.id) throw new Error('User ID not found');
+      const res = await axiosPublic.get(`/user/${user.id}`);
+      return res.data;
+    },
+    enabled: !!user?.id,
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
+    retry: 2,
+    staleTime: 0, // Mark data as stale immediately
+    cacheTime: 1000 * 60 * 5, // Cache for 5 minutes
+  });
 
-    fetchUserInfo();
-  }, [user]); 
-
-  return { userInfo, userLoading, userError };
+  return { userInfo, userLoading, userError, refetch };
 };
 
 export default useUser;
