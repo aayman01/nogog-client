@@ -6,6 +6,7 @@ import Main from "../layout/Main";
 import Dashboard from "../layout/Dashboard";
 import { TransactionsPage } from "../Pages/TransicationsPage";
 import SendMoney from "../Pages/SendMoney";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -23,15 +24,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
       },
       {
-        path:"send-money",
-        element: <SendMoney/>
+        path: "send-money",
+        element: (
+          <PrivateRoute>
+            <SendMoney />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admin/agents/:id",
-        element: <TransactionsPage />,
+        element: (
+          <PrivateRoute>
+            <TransactionsPage />
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -11,7 +11,7 @@ const Dashboard = () => {
   const { userInfo, userLoading } = useUser();
   const [showBalance, setShowBalance] = useState(false);
 
-  console.log(userInfo);
+  // console.log(userInfo);
 
   if (loading | userLoading) return <div className="flex items-start justify-center">Loading...</div>;
 

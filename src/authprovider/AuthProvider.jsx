@@ -32,14 +32,13 @@ const AuthProvider = ({ children }) => {
     }
   }, []);
   const login = async (identifier, pin) => {
-    // console.log(identifier,pin)
     try {
       const res = await axiosPublic.post("/login", { identifier, pin });
       const { token, user: loggedInUser } = res.data;
       localStorage.setItem("token", token); 
       setUser(loggedInUser);
       toast.success("Logged in successfully!");
-      // navigate("/");
+      window.location.href = "/dashboard"; // Navigate to dashboard
       return true; 
     } catch (error) {
       console.error("Login error:", error);
@@ -56,6 +55,7 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
     setUser(null);
     toast.info("Logged out.");
+    window.location.href = "/login"; // Navigate to login page
   };
 
 
