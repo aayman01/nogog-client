@@ -1,4 +1,4 @@
-# uSER CREDETIALS
+# USER CREDETIALS
 
 ADMIN Email : ayman.alfi098@gmail.com
 ADMIn Pin : 12345
