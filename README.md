@@ -1,8 +1,10 @@
-# React + Vite
+# uSER CREDETIALS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ADMIN Email : ayman.alfi098@gmail.com
+ADMIn Pin : 12345
 
-Currently, two official plugins are available:
+AGENT Email : ayman.alfi09@gmail.com
+AGENT Pin : 12345
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+USER Email: hafiz@gmail.com,
+USER Pin: 12345
